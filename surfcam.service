@@ -1,0 +1,13 @@
+#systemd service for the surfcam ffmpeg script
+[Unit]
+After=multi-user.target network-online.target
+
+[Service]
+ExecStart=/surf/surfcam.sh
+KillMode=control-group
+Restart=on-failure
+TimeoutSec=1
+
+[Install]
+WantedBy=multi-user.target
+Alias=surfcam.service
