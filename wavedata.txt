@@ -1,0 +1,3 @@
+#YY  MM DD hh mm WVHT  SwH  SwP  WWH  WWP SwD WWD  STEEPNESS  APD MWD
+#yr  mo dy hr mn    m    m  sec    m  sec  -  degT     -      sec degT
+2022 10 24 20 40  1.1  1.0  8.3  0.4  3.8   W  SE      SWELL  5.7 262
