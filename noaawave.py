@@ -1,3 +1,4 @@
+from datetime import datetime
 import requests
 import os
 
@@ -9,7 +10,11 @@ def print_hi(name):
     with open('/surf/wavedata.txt', 'wb') as f:
         f.write(r.content)
     file = open('/surf/wavedata.txt')
+    timestamp = datetime.now().strftime("%m/%d/%y %H:%M")
     content = file.readlines()
+    content[0] = content[0].strip() + "   TIMESTAMP\n"
+    content[1] = content[1].strip() + "  MM/DD/YY hh:mm TZ\n"
+    content[2] = content[2].strip() + f"   {timestamp} PST\n"  # datetime.now() returns local time, so assume PST
     data = content[0]+content[1]+content[2]
     with open('/surf/wavedata.txt', 'w') as f:
         f.write(data)
