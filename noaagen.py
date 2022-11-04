@@ -1,3 +1,4 @@
+from datetime import datetime
 import requests
 import re
 
@@ -15,9 +16,10 @@ def print_hi(name):
     file = open('/surf/gendata.txt')
     content = file.readlines()
     data = content[0]+content[1]+content[2]
-    data = re.sub(tlreg, '', data)
-    data = re.sub(mlreg, '', data)
-    data = re.sub(blreg, '', data)
+    timestamp = datetime.now().strftime("%m/%d/%y %H:%M")
+    data = re.sub(tlreg, '  TIMESTAMP', data)
+    data = re.sub(mlreg, '  MM/DD/YY hh:mm TZ', data)
+    data = re.sub(blreg, f'  {timestamp} PST', data)  # datetime.now() returns local time, so assume PST
     with open('/surf/gendata.txt', 'w') as f:
         f.write(data)
     print(data)
