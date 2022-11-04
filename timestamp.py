@@ -10,7 +10,7 @@ def add_timestamp(filename):
     if filename not in valid_filenames:
         raise ValueError(f"{filename} is not one of the valid filenames: {valid_filenames}")
 
-    file = open(f"./surf/{filename}")
+    file = open(f"/surf/{filename}")
     content = file.readlines()
     timestamp = datetime.now().strftime("%m/%d/%y %H:%M")  # get timestamp
     if "TIMESTAMP" in content[0]:  # if timestamp is already there, just update the value
@@ -21,7 +21,7 @@ def add_timestamp(filename):
         content[1] = content[1].strip() + "  MM/DD/YY hh:mm TZ\n"
         content[2] = content[2].strip() + f"   {timestamp} PST\n"  # datetime.now() returns local time, so assume PST
     data = content[0]+content[1]+content[2]
-    with open(f"./surf/{filename}", "w") as f:
+    with open(f"/surf/{filename}", "w") as f:
         f.write(data)
     print(data)
     f.close
