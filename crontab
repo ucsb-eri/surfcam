@@ -1,5 +1,5 @@
-0-59/2 * * * * /usr/bin/python3 /surf/timestamp.py -n wavedata.txt && /usr/bin/cat /surf/wavedata.txt > /surf/data.txt #write wavedata to the subtitle file every other minute
-1-59/2 * * * * /usr/bin/python3 /surf/timestamp.py -n gendata.txt && /usr/bin/cat /surf/gendata.txt > /surf/data.txt #write general buoy data to the subtitle file every other minute
+0-59/2 * * * * /usr/bin/cat /surf/wavedata.txt > /surf/data.txt #write wavedata to the subtitle file every other minute
+1-59/2 * * * * /usr/bin/cat /surf/gendata.txt > /surf/data.txt #write general buoy data to the subtitle file every other minute
 */10 * * * * /usr/bin/python3 /surf/noaagen.py #pull and parse general buoy data
 40 */1 * * * /usr/bin/python3 /surf/noaawave.py #pull and parse wave data
 0 */4 * * * /bin/systemctl restart surfcam.service #restart the surfcam service every four hours because ffmpeg
